@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Move, PokeapiResponse } from "../interfaces/pokeapi-response.interface";
+import { Move, PockeapiResponse } from "../interfaces/pokeapi-response.interface";
 
 export class Pockemon {
     //Standard constructor
@@ -35,7 +35,7 @@ export class Pockemon {
     }
 
     async getMoves(): Promise<Move[]> {
-        const { data } = await axios.get<PokeapiResponse>(`https://pokeapi.co/api/v2/pokemon/${this.id}`);
+        const { data } = await axios.get<PockeapiResponse>(`https://pokeapi.co/api/v2/pokemon/${this.id}`);
         console.log(data.moves);
         return data.moves;
         
