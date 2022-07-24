@@ -1,5 +1,5 @@
-import { PokeApiAdapter } from '../api/pokeApi.adapter';
-import { Move } from '../interfaces/pokeapi-response.interface';
+import { httpAdapater, PockeapiFetchAdapter, PokeApiAdapter } from '../api/pokeApi.adapter';
+import { Move, PockeapiResponse } from '../interfaces/pokeapi-response.interface';
 
 export class Pockemon {
 
@@ -10,7 +10,7 @@ export class Pockemon {
     constructor(
         public readonly id: number, 
         public name: string,
-        private readonly http: PokeApiAdapter
+        private readonly http: httpAdapater
 
     ) {}
 
@@ -23,7 +23,7 @@ export class Pockemon {
     }
 
     async getMoves(): Promise<Move[]> {
-        const  data  = await this.http.get(`https://pokeapi.co/api/v2/pokemon/${ this.id }`);
+        const  data  = await this.http.get<PockeapiResponse>(`https://pokeapi.co/api/v2/pokemon/${ this.id }`);
         console.log( data.moves );
         
         return data.moves;
@@ -33,5 +33,6 @@ export class Pockemon {
 
 //export const charmander = new Pokemon( 4, 'Charmander' );
 
-export const binazord = new Pockemon(4, 'binazord', new PokeApiAdapter());
+//patron adaptador
+export const binazord = new Pockemon(4, 'binazord', new PokeApiAdapter);
 console.log(binazord.getMoves());
