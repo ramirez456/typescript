@@ -4,6 +4,7 @@ import { setupCounter } from './counter'
 import { name, age , version} from './bases/01-types'
 import { picacku } from './bases/02-objects'
 import { binazord } from './bases/04-injection'
+import { charmander } from './bases/05-decoradores'
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
     <a href="https://vitejs.dev" target="_blank">
@@ -28,6 +29,11 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </div>
     <div>
       ${binazord.id}
+    </div>
+
+    <div>
+      ${charmander.name }
+      ${charmander.id} 
     </div>
   </div>
 
